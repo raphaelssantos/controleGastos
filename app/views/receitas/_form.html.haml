@@ -2,10 +2,10 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :nomereceita
-    = f.input :datavencimento
-    = f.input :valor
-    = f.input :saldo
+    = f.input :nomereceita, label: "Nomereceita"
+    = f.input :datavencimento, label: "Datavencimento"
+    = f.input :valor, label: "Valor"
+    = f.input :saldo, label: "Saldo"
 
   .form-actions
-    = f.button :submit
+    = f.submit "Salvar"

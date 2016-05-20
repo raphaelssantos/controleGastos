@@ -812,3 +812,410 @@ Processing by DespesasController#index as HTML
   Rendered layouts/_messages.html.haml (0.1ms)
 Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
   [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (98.1ms)[0m  [1mCREATE TABLE "despesas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nomedespesa" varchar, "datavencimento" varchar, "valor" varchar, "saldo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (99.2ms)[0m  CREATE TABLE "receitas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nomereceita" varchar, "datavencimento" varchar, "valor" varchar, "saldo" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (95.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (99.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (72.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160520171130')[0m
+  [1m[35m (66.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160520155623')
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (68.3ms)[0m  [1mDELETE FROM "despesas";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'despesas';[0m
+  [1m[35m (65.8ms)[0m  DELETE FROM "receitas";
+  [1m[36m (0.3ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'receitas';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/despesas/new" for 127.0.0.1 at 2016-05-20 14:21:12 -0300
+Processing by DespesasController#new as HTML
+  Rendered despesas/_form.html.haml (544.5ms)
+  Rendered despesas/new.html.haml within layouts/application (550.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.haml (2.8ms)
+  Rendered layouts/_messages.html.haml (0.9ms)
+Completed 200 OK in 942ms (Views: 924.7ms | ActiveRecord: 0.4ms)
+Started POST "/despesas" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#create as HTML
+  Parameters: {"utf8"=>"✓", "despesa"=>{"nomedespesa"=>"aluguel", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"000"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "despesas" ("nomedespesa", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["nomedespesa", "aluguel"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "000"], ["created_at", "2016-05-20 17:21:13.681546"], ["updated_at", "2016-05-20 17:21:13.681546"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/despesas/1
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms)
+Started GET "/despesas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDespesa Load (0.2ms)[0m  [1mSELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered despesas/show.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 14ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "despesas" ("nomedespesa", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["nomedespesa", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:21:13.712191"], ["updated_at", "2016-05-20 17:21:13.712191"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/despesas/1/edit" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDespesa Load (0.1ms)[0m  [1mSELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered despesas/_form.html.haml (5.3ms)
+  Rendered despesas/edit.html.haml within layouts/application (7.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.1ms)
+Started PATCH "/despesas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#update as HTML
+  Parameters: {"utf8"=>"✓", "despesa"=>{"nomedespesa"=>"aluguel", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"000"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mDespesa Load (0.1ms)[0m  SELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "despesas" SET "nomedespesa" = ?, "datavencimento" = ?, "valor" = ?, "saldo" = ?, "updated_at" = ? WHERE "despesas"."id" = ?  [["nomedespesa", "aluguel"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "000"], ["updated_at", "2016-05-20 17:21:13.749935"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/despesas/1
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+Started GET "/despesas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDespesa Load (0.1ms)[0m  SELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered despesas/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "despesas" ("nomedespesa", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["nomedespesa", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:21:13.769088"], ["updated_at", "2016-05-20 17:21:13.769088"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/despesas" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#index as HTML
+  [1m[35mDespesa Load (0.2ms)[0m  SELECT "despesas".* FROM "despesas"
+  Rendered despesas/index.html.haml within layouts/application (4.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.2ms)
+Started DELETE "/despesas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDespesa Load (0.1ms)[0m  [1mSELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "despesas" WHERE "despesas"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/despesas
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/despesas" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by DespesasController#index as HTML
+  [1m[36mDespesa Load (0.2ms)[0m  [1mSELECT "despesas".* FROM "despesas"[0m
+  Rendered despesas/index.html.haml within layouts/application (0.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/receitas/new" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#new as HTML
+  Rendered receitas/_form.html.haml (6.8ms)
+  Rendered receitas/new.html.haml within layouts/application (8.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 25ms (Views: 17.7ms | ActiveRecord: 0.3ms)
+Started POST "/receitas" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#create as HTML
+  Parameters: {"utf8"=>"✓", "receita"=>{"nomereceita"=>"acoes", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"3000"}, "commit"=>"Salvar"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "receitas" ("nomereceita", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["nomereceita", "acoes"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "3000"], ["created_at", "2016-05-20 17:21:13.842606"], ["updated_at", "2016-05-20 17:21:13.842606"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/receitas/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/receitas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReceita Load (0.2ms)[0m  [1mSELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered receitas/show.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "receitas" ("nomereceita", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["nomereceita", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:21:13.860626"], ["updated_at", "2016-05-20 17:21:13.860626"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/receitas/1/edit" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReceita Load (0.1ms)[0m  [1mSELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered receitas/_form.html.haml (5.2ms)
+  Rendered receitas/edit.html.haml within layouts/application (6.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.1ms)
+Started PATCH "/receitas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#update as HTML
+  Parameters: {"utf8"=>"✓", "receita"=>{"nomereceita"=>"acoes", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"3000"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[35mReceita Load (0.1ms)[0m  SELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "receitas" SET "nomereceita" = ?, "datavencimento" = ?, "valor" = ?, "saldo" = ?, "updated_at" = ? WHERE "receitas"."id" = ?  [["nomereceita", "acoes"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "3000"], ["updated_at", "2016-05-20 17:21:13.885388"], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/receitas/1
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+Started GET "/receitas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mReceita Load (0.1ms)[0m  SELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered receitas/show.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "receitas" ("nomereceita", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["nomereceita", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:21:13.947363"], ["updated_at", "2016-05-20 17:21:13.947363"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/receitas" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#index as HTML
+  [1m[35mReceita Load (0.3ms)[0m  SELECT "receitas".* FROM "receitas"
+  Rendered receitas/index.html.haml within layouts/application (5.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.3ms)
+Started DELETE "/receitas/1" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReceita Load (0.1ms)[0m  [1mSELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "receitas" WHERE "receitas"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/receitas
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/receitas" for 127.0.0.1 at 2016-05-20 14:21:13 -0300
+Processing by ReceitasController#index as HTML
+  [1m[36mReceita Load (0.2ms)[0m  [1mSELECT "receitas".* FROM "receitas"[0m
+  Rendered receitas/index.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (88.2ms)[0m  DELETE FROM "despesas";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'despesas';
+  [1m[36m (76.5ms)[0m  [1mDELETE FROM "receitas";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'receitas';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/despesas/new" for 127.0.0.1 at 2016-05-20 14:22:47 -0300
+Processing by DespesasController#new as HTML
+  Rendered despesas/_form.html.haml (533.1ms)
+  Rendered despesas/new.html.haml within layouts/application (544.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.haml (2.8ms)
+  Rendered layouts/_messages.html.haml (0.9ms)
+Completed 200 OK in 803ms (Views: 784.9ms | ActiveRecord: 0.4ms)
+Started POST "/despesas" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#create as HTML
+  Parameters: {"utf8"=>"✓", "despesa"=>{"nomedespesa"=>"aluguel", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"000"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "despesas" ("nomedespesa", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["nomedespesa", "aluguel"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "000"], ["created_at", "2016-05-20 17:22:48.547930"], ["updated_at", "2016-05-20 17:22:48.547930"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/despesas/1
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms)
+Started GET "/despesas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDespesa Load (0.2ms)[0m  SELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered despesas/show.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 14ms (Views: 6.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "despesas" ("nomedespesa", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["nomedespesa", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:22:48.578960"], ["updated_at", "2016-05-20 17:22:48.578960"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/despesas/1/edit" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDespesa Load (0.1ms)[0m  SELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered despesas/_form.html.haml (5.1ms)
+  Rendered despesas/edit.html.haml within layouts/application (6.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.1ms)
+Started PATCH "/despesas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#update as HTML
+  Parameters: {"utf8"=>"✓", "despesa"=>{"nomedespesa"=>"aluguel", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"000"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[36mDespesa Load (0.1ms)[0m  [1mSELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "despesas" SET "nomedespesa" = ?, "datavencimento" = ?, "valor" = ?, "saldo" = ?, "updated_at" = ? WHERE "despesas"."id" = ?[0m  [["nomedespesa", "aluguel"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "000"], ["updated_at", "2016-05-20 17:22:48.603204"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/despesas/1
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+Started GET "/despesas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDespesa Load (0.1ms)[0m  [1mSELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered despesas/show.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "despesas" ("nomedespesa", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["nomedespesa", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:22:48.621850"], ["updated_at", "2016-05-20 17:22:48.621850"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/despesas" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#index as HTML
+  [1m[36mDespesa Load (0.2ms)[0m  [1mSELECT "despesas".* FROM "despesas"[0m
+  Rendered despesas/index.html.haml within layouts/application (4.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.2ms)
+Started DELETE "/despesas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDespesa Load (0.1ms)[0m  SELECT  "despesas".* FROM "despesas" WHERE "despesas"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "despesas" WHERE "despesas"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/despesas
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/despesas" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by DespesasController#index as HTML
+  [1m[35mDespesa Load (0.2ms)[0m  SELECT "despesas".* FROM "despesas"
+  Rendered despesas/index.html.haml within layouts/application (0.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/receitas/new" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#new as HTML
+  Rendered receitas/_form.html.haml (6.4ms)
+  Rendered receitas/new.html.haml within layouts/application (8.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 25ms (Views: 18.0ms | ActiveRecord: 0.3ms)
+Started POST "/receitas" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#create as HTML
+  Parameters: {"utf8"=>"✓", "receita"=>{"nomereceita"=>"acoes", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"3000"}, "commit"=>"Salvar"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "receitas" ("nomereceita", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["nomereceita", "acoes"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "3000"], ["created_at", "2016-05-20 17:22:48.692703"], ["updated_at", "2016-05-20 17:22:48.692703"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/receitas/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/receitas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mReceita Load (0.2ms)[0m  SELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered receitas/show.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "receitas" ("nomereceita", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["nomereceita", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:22:48.712788"], ["updated_at", "2016-05-20 17:22:48.712788"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/receitas/1/edit" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mReceita Load (0.1ms)[0m  SELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered receitas/_form.html.haml (4.9ms)
+  Rendered receitas/edit.html.haml within layouts/application (6.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.1ms)
+Started PATCH "/receitas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#update as HTML
+  Parameters: {"utf8"=>"✓", "receita"=>{"nomereceita"=>"acoes", "datavencimento"=>"20-01-2016", "valor"=>"100000", "saldo"=>"3000"}, "commit"=>"Salvar", "id"=>"1"}
+  [1m[36mReceita Load (0.1ms)[0m  [1mSELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "receitas" SET "nomereceita" = ?, "datavencimento" = ?, "valor" = ?, "saldo" = ?, "updated_at" = ? WHERE "receitas"."id" = ?[0m  [["nomereceita", "acoes"], ["datavencimento", "20-01-2016"], ["valor", "100000"], ["saldo", "3000"], ["updated_at", "2016-05-20 17:22:48.736620"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/receitas/1
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/receitas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReceita Load (0.1ms)[0m  [1mSELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered receitas/show.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.5ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "receitas" ("nomereceita", "datavencimento", "valor", "saldo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["nomereceita", "MyString"], ["datavencimento", "MyString"], ["valor", "MyString"], ["saldo", "MyString"], ["created_at", "2016-05-20 17:22:48.754137"], ["updated_at", "2016-05-20 17:22:48.754137"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/receitas" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#index as HTML
+  [1m[36mReceita Load (0.2ms)[0m  [1mSELECT "receitas".* FROM "receitas"[0m
+  Rendered receitas/index.html.haml within layouts/application (4.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.2ms)
+Started DELETE "/receitas/1" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mReceita Load (0.1ms)[0m  SELECT  "receitas".* FROM "receitas" WHERE "receitas"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "receitas" WHERE "receitas"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/receitas
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/receitas" for 127.0.0.1 at 2016-05-20 14:22:48 -0300
+Processing by ReceitasController#index as HTML
+  [1m[35mReceita Load (0.2ms)[0m  SELECT "receitas".* FROM "receitas"
+  Rendered receitas/index.html.haml within layouts/application (0.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.0ms)
+  Rendered layouts/_navigation.html.haml (0.4ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
