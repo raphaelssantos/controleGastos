@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Despesa:
+  = @pagamento.despesa
+%p
+  %b Formapagamento:
+  = @pagamento.formapagamento
+%p
+  %b Data:
+  = @pagamento.data
+%p
+  %b Valor:
+  = @pagamento.valor
+
+= link_to 'Edit', edit_pagamento_path(@pagamento)
+\|
+= link_to 'Back', pagamentos_path

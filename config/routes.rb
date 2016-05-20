@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pagamentos
   resources :receitas
   resources :despesas
   root to: 'visitors#index'
