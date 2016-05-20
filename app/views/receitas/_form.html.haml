@@ -1,0 +1,11 @@
+= simple_form_for(@receita) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nomereceita
+    = f.input :datavencimento
+    = f.input :valor
+    = f.input :saldo
+
+  .form-actions
+    = f.button :submit

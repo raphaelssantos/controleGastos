@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Nomereceita:
+  = @receita.nomereceita
+%p
+  %b Datavencimento:
+  = @receita.datavencimento
+%p
+  %b Valor:
+  = @receita.valor
+%p
+  %b Saldo:
+  = @receita.saldo
+
+= link_to 'Edit', edit_receita_path(@receita)
+\|
+= link_to 'Back', receitas_path
