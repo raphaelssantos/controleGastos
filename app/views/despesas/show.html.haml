@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Nomedespesa:
+  = @despesa.nomedespesa
+%p
+  %b Datavencimento:
+  = @despesa.datavencimento
+%p
+  %b Valor:
+  = @despesa.valor
+%p
+  %b Saldo:
+  = @despesa.saldo
+
+= link_to 'Edit', edit_despesa_path(@despesa)
+\|
+= link_to 'Back', despesas_path

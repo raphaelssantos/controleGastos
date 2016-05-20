@@ -1,0 +1,27 @@
+%h1 Listing despesas
+
+%table
+  %thead
+    %tr
+      %th Nomedespesa
+      %th Datavencimento
+      %th Valor
+      %th Saldo
+      %th
+      %th
+      %th
+
+  %tbody
+    - @despesas.each do |despesa|
+      %tr
+        %td= despesa.nomedespesa
+        %td= despesa.datavencimento
+        %td= despesa.valor
+        %td= despesa.saldo
+        %td= link_to 'Show', despesa
+        %td= link_to 'Edit', edit_despesa_path(despesa)
+        %td= link_to 'Destroy', despesa, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Despesa', new_despesa_path
