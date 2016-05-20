@@ -18,3 +18,5 @@ Processing by VisitorsController#index as HTML
   Rendered layouts/_navigation.html.haml (3.2ms)
   Rendered layouts/_messages.html.haml (1.3ms)
 Completed 200 OK in 865ms (Views: 854.4ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
