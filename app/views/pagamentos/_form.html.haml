@@ -2,10 +2,10 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :despesa
-    = f.input :formapagamento
-    = f.input :data
-    = f.input :valor
+    = f.association :despesa, label: "Nome"
+    = f.input :formapagamento, label: "Formapagamento"
+    = f.input :data, label: "Data"
+    = f.input :valor, label: "Valor"
 
   .form-actions
-    = f.button :submit
+    = f.submit "Salvar"

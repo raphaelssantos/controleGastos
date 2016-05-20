@@ -14,7 +14,7 @@
   %tbody
     - @pagamentos.each do |pagamento|
       %tr
-        %td= pagamento.despesa
+        %td= pagamento.despesa.nomedespesa
         %td= pagamento.formapagamento
         %td= pagamento.data
         %td= pagamento.valor
